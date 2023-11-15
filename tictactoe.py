@@ -1,7 +1,7 @@
 board = [["_"] * 3 for i in range(3)]  # создаем игровое поле
 
 
-def greatings():  # функция для приветствия
+def greetings():  # функция для приветствия
     print("********************\n"
           "* Добро пожаловать *\n"
           "*      в игру      *\n"
@@ -66,7 +66,7 @@ def win_lines():  # проверка выигрышных комбинаций
 move_count = 0
 while True:  # запуск самой игры, очередность и количество ходов, вывод победителя
     move_count += 1
-    greatings()
+    greetings()
     draw_board()
     if move_count % 2 == 1:
         print("  Ход игрока - 'X'")
