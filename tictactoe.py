@@ -1,3 +1,5 @@
+import random
+
 board = [["_"] * 3 for i in range(3)]  # создаем игровое поле
 
 
@@ -43,6 +45,12 @@ def make_move():  # запрос хода, координат / проверка
             continue
         return x, y
 
+def make_ai_move():
+    while True:
+        x, y = random.randint(0,2), random.randint(0,2)
+        if board[x][y] != "_":
+            continue
+        return x,y
 
 def win_lines():  # проверка выигрышных комбинаций
     win_coords = [((0, 0), (0, 1), (0, 2)), ((1, 0), (1, 1), (1, 2)), ((2, 0), (2, 1), (2, 2)),
@@ -70,14 +78,11 @@ while True:  # запуск самой игры, очередность и ко�
     draw_board()
     if move_count % 2 == 1:
         print("  Ход игрока - 'X'")
-    else:
-        print("  Ход игрока - 'O'")
-
-    x, y = make_move()
-
-    if move_count % 2 == 1:
+        x, y = make_move()
         board[x][y] = "X"
     else:
+        print("  Ход ИИ - 'O'")
+        x, y = make_ai_move()
         board[x][y] = "O"
 
     if win_lines():
